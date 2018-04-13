@@ -1,0 +1,16 @@
+h1 Listing posts
+
+- @posts.each do |post|
+  h2 = post.title
+  p = post.content
+  div
+    b Author:
+    =< post.user.email
+
+  - if user_signed_in?
+    li = link_to 'Show', post
+    li = link_to 'Edit', edit_post_path(post)
+    li = link_to 'Destroy', post, data: { confirm: 'Are you sure?' }, method: :delete
+    br
+- if user_signed_in?
+  = link_to 'New Post', new_post_path, class: 'btn btn-default'
